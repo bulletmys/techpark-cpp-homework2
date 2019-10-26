@@ -5,6 +5,16 @@ dist: trusty
 # Build Dependencies
 #
 before_script:
+  - sudo apt update
+  - sudo apt install valgrind
+  - sudo apt install cmake
+  - sudo apt install libgtest-dev
+  - pip install --user cpp-coveralls
+  - cd /usr/src/gtest
+  - sudo cmake CMakeLists.txt || (cat CMakeFiles/CMakeError.log && CMakeFiles/CMakeOutput.log)
+  - sudo make
+  - sudo cp *.a /usr/lib
+  - cd -
 
   #
   # Build Folder
