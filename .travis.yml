@@ -22,7 +22,7 @@ script:
   - cmake CMakeLists.txt
   - ls
   - make
-  - valgrind --leak-check=full -q ./mod_test
+  - valgrind --leak-check=full -q ./gtest
 
 after_script:
   - make clean
