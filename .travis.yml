@@ -1,0 +1,35 @@
+addons:
+  apt:
+    update: true
+
+
+os: linux
+language: c++
+
+before_install:
+#  - cd techpark-cpp-homework2
+  - sudo apt update
+  - sudo apt install valgrind
+  - sudo apt install cmake
+  - sudo apt install libgtest-dev
+  - pip install --user cpp-coveralls
+  - cd /usr/src/gtest
+  - sudo cmake CMakeLists.txt || (cat CMakeFiles/CMakeError.log && CMakeFiles/CMakeOutput.log)
+  - sudo make
+  - sudo cp *.a /usr/lib
+  - cd -
+
+compiler:
+  - gcc
+
+script:
+  - cmake CMakeLists.txt
+  - ls
+  - make
+  - valgrind --leak-check=full -q ./gtest
+
+after_script:
+  - make clean
+
+after_success:
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
