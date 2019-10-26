@@ -5,7 +5,6 @@ dist: trusty
 # Build Dependencies
 #
 before_script:
-  - sudo apt update
   - sudo apt install valgrind
   - sudo apt install cmake
   - sudo apt install libgtest-dev
