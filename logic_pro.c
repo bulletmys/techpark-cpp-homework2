@@ -12,6 +12,7 @@ void MakePartition(size_t first, size_t second, int partition_queue_qid) {
     part.first = first;
     part.last = second;
     msgsnd(partition_queue_qid, &part, sizeof(struct partition) - sizeof(long), 0);
+
 }
 
 
