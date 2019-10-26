@@ -6,7 +6,7 @@ addons:
 language: c++
 
 before_install:
-  - cd techpark-cpp-homework2
+#  - cd techpark-cpp-homework2
   - sudo apt update
   - sudo apt install valgrind
   - sudo apt install cmake
